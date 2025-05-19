@@ -1,0 +1,84 @@
+.M {
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-size: larger;
+  font-weight: bolder;
+}
+.Ac-Main {
+  border: 1px solid #e6e5f2;
+  height: 100%;
+  border-radius: 25px;
+  flex-direction: row;
+  flex-basis: 22%;
+  justify-content: space-evenly;
+  align-items: stretch;
+  margin-top: 20px;
+  font-size: 0.875rem;
+  display: flex;
+}
+.controls-content {
+  border: 1px solid #e6e5f2;
+  height: 100px;
+  width: 100%;
+  border-radius: 25px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  direction: row;
+  box-shadow: rgba(123, 5, 241, 0.525) 0px 5px 15px;
+}
+
+.radio__ac label { 
+  position:absolute;
+ top: 0.2ex;
+  z-index: 1;
+  font-size: small;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 5%;
+  color: grey;
+  font-weight: 200;
+  
+
+}
+.controls-content-content {
+  display: inline-block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  font-weight: bolder;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.addIcon {
+  display: inline-block;
+  width: 33%;
+}
+.removeIcon {
+  display: inline-block;
+  width: 33%;
+}
+.power-content {
+  border: 1px solid #e6e5f2;
+  height: auto;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+.Power-Consumed {
+  display: inline-block;
+  width: 40%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: larger;
+  font-weight: bold;
+}
+.Controls {
+  width: 40%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: larger;
+  font-weight: bold;
+}

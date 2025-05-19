@@ -1,0 +1,72 @@
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.settingForm {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+}
+
+.settingPP {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.settingPP > img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.pic__upload {
+display: flex;
+flex-direction: row;
+}
+
+.settingPPIcon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgb(189, 60, 222);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.settingForm > label {
+  font-size: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.settingForm > input {
+  color: gray;
+  margin: 10px 0;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid lightgray;
+}
+
+.settingSubmit{
+    width: 150px;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: #7A40F2;
+    padding: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
