@@ -1,25 +1,27 @@
 import mongoose from "mongoose";
 
 const FanSchema = new mongoose.Schema({
-    time:{
-        required: true,
-        type: Date,
-        default: Date.now
-    },
-    userId:{
-        required: true,
-        type: String
-    },
-    speed:{
-        required: true,
-        type: Number
-    },
-    status:{
-        required: true,
-        type: String
-    }
+  time: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  userId: {
+    type: String,
+    required: true
+  },
+  speed: {
+    type: Number,
+    required: true,
+    default: 100 
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: ["ON", "OFF"]
+  }
 });
 
-const fan = mongoose.model("Fan", FanSchema);
+const Fan = mongoose.model("Fan", FanSchema);
 
-export default fan;
+export default Fan;

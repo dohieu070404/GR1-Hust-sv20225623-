@@ -11,7 +11,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useContext, useState } from "react";
-import WaterControl from "./pages/waterControl/waterControl";
+import RelayControl from "./pages/waterControl/RelayControl";
 import MotionControl from "./pages/motionControl/MotionControl";
 import LedControl from "./pages/ledControl/LedControl"
 import { Context } from "./context/Context";
@@ -45,8 +45,8 @@ const {user} = useContext(Context);
           <Route path="/" element={<Home />} />
         </Route>
 
-        <Route path="/waterControl" element={<ProtectedRoute user={user} />}>
-          <Route path="/waterControl" element={<WaterControl />} />
+        <Route path="/RelayControl" element={<ProtectedRoute user={user} />}>
+          <Route path="/RelayControl" element={<RelayControl />} />
         </Route>
 
         <Route path="/accontrol" element={<ProtectedRoute user={user} />}>

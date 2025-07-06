@@ -77,24 +77,24 @@ const App = () => {
           <div className="groupWrapper7">
             <img className="groupWrapper7" alt="" src="../../path1.svg" />
             <div className="text">
-              <div className="welcomeHomeThe">{`Welcome Home! The air quality is good & fresh you can go out today.`}</div>
-              <b className="helloScarlett">Hello, {user.username}</b>
-              <div className="outdoorTemperatureParent">
+              <div className="welcomeHomeThe">{`Chúc bạn một ngày tốt lànhlành`}</div>
+              <b className="helloScarlett">Xin Chào, {user.username}</b>
+              {/* <div className="outdoorTemperatureParent">
                 <div className="outdoorTemperature">Outdoor temperature</div>
                 <i className="fa-solid fa-temperature-quarter pathIcon2"></i>
                 <div className="parent1">
                   <div className="div6">{CurrentTemp}°C</div>
                 </div>
-              </div>
-              <div className="fuzzyCloudyWeatherParent">
+              </div> */}
+              {/* <div className="fuzzyCloudyWeatherParent">
               <i className={weatherIcon}></i>  
                 <div className="fuzzyCloudyWeather">{weatherCond}</div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
-      <div className="main-Content">
+      {/* <div className="main-Content">
         <div className="home-text">
           <b>Sync Home</b>
         </div>
@@ -107,7 +107,7 @@ const App = () => {
         </div>
 
   
-      </div>
+      </div> */}
     </div>
   );
 };

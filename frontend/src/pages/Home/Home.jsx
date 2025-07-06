@@ -1,138 +1,143 @@
 import "./home.css";
+import { Box, Typography, styled } from "@mui/material";
+import { useState, useContext } from "react";
+import axios from "axios";
 
-import { dividerClasses, Grid, styled } from "@mui/material";
-// import { styled } from '@mui/system';
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Topbar from "../../components/Topbar/Topbar";
 import Main from "../../components/main/Main";
 import FourColumnDiv from "../../components/main/FourColumnDiv";
 import Userlist from "../../components/Userslist/Userlist";
-import ChartExpense from "../../components/ChartExpense/ChartExpense";
-import { containerClasses } from "@mui/system";
-import WaterPumpIcon from '@mui/icons-material/Opacity';
-import TemperatureIcon from '@mui/icons-material/DeviceThermostat'
-import LightIcon from '@mui/icons-material/TipsAndUpdates'
-import MotionSensor from '@mui/icons-material/DirectionsRun'
-import { useEffect, useState } from "react";
-import axios from "axios";
-const SidebarGrid = styled(Grid)`
-  max-width: 10%;
-`;
-const TopbarGrid = styled(Grid)`
-  right: 0;
-  top: 0;
-  float: right;
-`;
-const ContainerGrid = styled(Grid)`
-  justify-content: center;
-  width: 100%;
-`;
-const MainGrid = styled(Grid)`
-  padding-left: 2vw;
-`;
+// import ChartExpense from "../../components/ChartExpense/ChartExpense";
+
+import WaterPumpIcon from "@mui/icons-material/Opacity";
+import TemperatureIcon from "@mui/icons-material/DeviceThermostat";
+import LightIcon from "@mui/icons-material/TipsAndUpdates";
+import MotionSensorIcon from "@mui/icons-material/DirectionsRun";
+
+import { Context } from "../../context/Context"; // ✅ Thêm dòng này
+
+// Layout containers
+const Layout = styled(Box)(() => ({
+  display: "flex",
+  height: "100vh",
+  backgroundColor: "#f5f7fa",
+  overflow: "hidden",
+}));
+
+const SidebarWrapper = styled(Box)(() => ({
+  width: "260px",
+  backgroundColor: "#ffffff",
+  boxShadow: "2px 0 8px rgba(0,0,0,0.06)",
+  zIndex: 100,
+}));
+
+const MainWrapper = styled(Box)(() => ({
+  flex: 1,
+  display: "flex",
+  flexDirection: "column",
+  overflow: "hidden",
+}));
+
+const ContentWrapper = styled(Box)(() => ({
+  display: "flex",
+  flex: 1,
+  overflow: "hidden",
+}));
+
+const MainContent = styled(Box)(() => ({
+  flex: 1,
+  padding: "2rem 3rem",
+  overflowY: "auto",
+  backgroundColor: "#f9fafc",
+}));
+
+const RightPanel = styled(Box)(() => ({
+  width: "340px",
+  backgroundColor: "#ffffff",
+  padding: "2rem",
+  boxShadow: "-2px 0 6px rgba(0,0,0,0.04)",
+  borderLeft: "1px solid #e0e0e0",
+  overflowY: "auto",
+}));
+
+const SectionTitle = styled(Typography)(() => ({
+  fontWeight: 600,
+  fontSize: "20px",
+  marginBottom: "1rem",
+  color: "#333",
+}));
 
 const Home = () => {
+  const mode = "normal";
+  const { user } = useContext(Context); // ✅ Lấy user từ context
 
-  const [nameOne, setNameOne] = useState("Water Pump");
-  const [valueOne, setValueOne] = useState(false);
+  const [devices, setDevices] = useState([
+    { name: "Water Pump", state: false, icon: <WaterPumpIcon /> },
+    { name: "Temperature", state: false, icon: <TemperatureIcon /> },
+    { name: "Motion Sensor", state: false, icon: <MotionSensorIcon /> },
+    { name: "Lights", state: false, icon: <LightIcon /> },
+  ]);
 
-  const [nameTwo, setNameTwo] = useState("Temperature");
-  const [valueTwo, setValueTwo] = useState(false);
+  const handleToggle = async (index) => {
+  const updated = [...devices];
+  updated[index].state = !updated[index].state;
+  setDevices(updated);
 
-  const [nameThree, setNameThree] = useState("Motion Sensor");
-  const [valueThree, setValueThree] = useState(false);
+  const { name } = updated[index];
+  const status = updated[index].state ? "ON" : "OFF";
 
-  const [nameFour, setNameFour] = useState("Lights");
-  const [valueFour, setValueFour] = useState(false);
-
-  const switchToggleOne = async () => {
-    setValueOne(!valueOne);
-
-    const status = valueOne ? "OFF" : "ON";
-
-   try {
-      await axios.post("/api/routes/manageLed", {
-        name: nameOne,
-        mode: mode,
-        status: status,
+  try {
+    if (name === "Motion Sensor") {
+      await axios.post("/api/routes/manageMotion", {
+        status,
+        userId: user._id,
       });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const switchToggleTwo = async () => {
-    setValueTwo(!valueTwo);
-
-    const status = valueTwo ? "OFF" : "ON";
-    console.log("Button clicked", status, "two");
-    try {
+    } else {
       await axios.post("/api/routes/manageLed", {
-        name: nameTwo,
-        mode: mode,
-        status: status,
+        name,
+        mode,
+        status,
+        userId: user._id,
       });
-    } catch (err) {
-      console.log(err);
     }
-  };
-  const switchToggleThree = async () => {
-    setValueThree(!valueThree);
+  } catch (error) {
+    console.error("Toggle error:", error);
+  }
+};
 
-    const status = valueThree ? "OFF" : "ON";
 
-    try {
-      await axios.post("/api/routes/manageLed", {
-        name: nameThree,
-        mode: mode,
-        status: status,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const switchToggleFour = async () => {
-    setValueFour(!valueFour);
-
-    const status = valueFour ? "OFF" : "ON";
-
-    try {
-      await axios.post("/api/routes/manageLed", {
-        name: nameFour,
-        mode: "normal",
-        status: status,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return (
-    <>
-      <ContainerGrid container spacing={2} justifyContent="flex-start">
-        <SidebarGrid item xs={1}>
-          <Sidebar />
-        </SidebarGrid>
+    <Layout>
+      <SidebarWrapper>
+        <Sidebar />
+      </SidebarWrapper>
 
-        <MainGrid item className="heroSection" xs={8}>
-          <Main />
-          <FourColumnDiv
-            switches={[
-              { name: nameOne, state: valueOne, icon:<WaterPumpIcon/>,handleChange: switchToggleOne, color:'#7a40f2',},
-              { name: nameTwo, state: valueTwo , icon:<TemperatureIcon/>,handleChange: switchToggleTwo, color:'#7a40f2',},
-              { name: nameThree, state: valueThree, icon:<MotionSensor/>,handleChange: switchToggleThree, color:'#7a40f2',},
-              { name: nameFour, state: valueFour, icon:<LightIcon/> ,handleChange: switchToggleFour, color:'#7a40f2',},
-            ]}
-          />
-        </MainGrid>
+      <MainWrapper>
+        <ContentWrapper>
+          <MainContent>
+            <SectionTitle>Dashboard Overview</SectionTitle>
+            <Main />
+            <Box mt={4}>
+              <FourColumnDiv
+                switches={devices.map((device, idx) => ({
+                  name: device.name,
+                  state: device.state,
+                  icon: device.icon,
+                  handleChange: () => handleToggle(idx),
+                  color: "#7a40f2",
+                }))}
+              />
+            </Box>
+          </MainContent>
 
-        <TopbarGrid className="rightColumn" item xs={3}>
-          <Userlist />
-          <div className="chart">
-          {/*<ChartExpense />*/}
-          </div>
-       
-        </TopbarGrid>
-      </ContainerGrid>
-    </>
+          <RightPanel>
+            <SectionTitle>User Monitoring</SectionTitle>
+            <Userlist />
+            {/* <ChartExpense /> */}
+          </RightPanel>
+        </ContentWrapper>
+      </MainWrapper>
+    </Layout>
   );
 };
 

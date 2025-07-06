@@ -1,20 +1,44 @@
-.heroSection{
-    padding-left: -100px;
+/* home.css */
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f5f7fa;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
-.rightColumn {
-   
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+  border-radius: 10px;
+}
+
+/* Chart section if used later */
+.chart-section {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive layout */
+@media (max-width: 960px) {
+  .MuiBox-root {
     flex-direction: column !important;
-    justify-content: center;
-    height: fit-content;
-    
-}
-.chart{
-    margin-top: 10%;
-}
+  }
 
-@media (max-width: 940px) {
+  .MuiBox-root > div {
+    width: 100% !important;
+  }
 
+  .chart-section {
+    margin-top: 2rem;
+  }
 }

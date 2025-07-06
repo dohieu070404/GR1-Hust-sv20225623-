@@ -408,11 +408,11 @@ const LedControl = () => {
               label="mode"
               onChange={handleSelectChange}
             >
-              <MenuItem value={"NORMAL"}>NORMAL</MenuItem>
-              <MenuItem value={"BLINK"}>BLINK</MenuItem>
+              <MenuItem value={"NORMAL"}>Bật đèn </MenuItem>
+              <MenuItem value={"BLINK"}>Party</MenuItem>
             </Select>
           </FormControl>
-          <ChartExpense tempData={tempData} />
+          {/* <ChartExpense tempData={tempData} /> */}
         </div>
         {/* <ChartExpense tempData={secData} /> */}
       </MainGrid>

@@ -36,11 +36,12 @@ const infoData = [
 const MotionControl = () => {
   const { user } = useContext(Context);
 
-  const [nameOne, setNameOne] = useState("Kitchen");
+  const [nameOne, setNameOne] = useState("Đèn  WC");
   const [valueOne, setValueOne] = useState(false);
 
   const switchToggleOne = async () => {
-    setValueOne(!valueOne);
+    const newValue = !valueOne;
+    setValueOne(newValue);
     console.log("Button clicked");
     const status = valueOne ? "OFF" : "ON";
 
@@ -84,10 +85,10 @@ const MotionControl = () => {
               </div>
               <div className="water__info" id="water__info">
                 <label htmlFor="water__info">Location: </label>
-                <h4>Last triggred:</h4>
+                <h4>Lần kích hoạt gần nhất </h4>
                 {/* insert data */}
                 <h5>{`${time}hrs ago`}</h5>
-                <h4>Total triggres this received this week:</h4>
+                <h4>Thời gian thiết bị hoạt động trong tuần này:</h4>
                 <h5>{`${waterConsumed} Liters`}</h5>
               </div>
             </div>
