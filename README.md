@@ -53,13 +53,17 @@ Visual Studio Code
 
 System Installation Instructions:
 1. Clone the project and copy the corresponding components into your system.
+
 2. Setup Instructions:
+
 2.1. Setup on Arduino IDE v2.3.6:
 Create a new sketch in Arduino IDE.
 Copy the contents from esp32.ino and esp8266.ino into their respective sketches.
 Install the necessary libraries (as listed in the code or README).
 Change the Wi-Fi SSID and password in the code to match your local network.
 Select the appropriate board type (ESP32 or ESP8266) and COM port for uploading the firmware.
+
+
 2.2. Setup the Web System:
 Open the "tessst111" project folder in Visual Studio Code.
 Make sure Node.js is installed. Run npm i in both backendd and Fontend directories to install dependencies.
