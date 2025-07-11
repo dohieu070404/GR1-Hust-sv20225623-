@@ -29,3 +29,49 @@ Cách cài đặt cho các thành phần của hệ thống :
 
 
 ``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+
+
+ENGLISH
+
+Project Summary - GR1 2024.2
+Student: Đỗ Trung Hiếu
+Student ID: 20225623
+Hardware and Peripherals Used:
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+ESP32 DevKit v1: Main microcontroller used for processing and communication with sensors.
+ESP8266: Handles communication with the relay module and reads data from RFID tags.
+DHT11 Sensor: Captures temperature and humidity from the environment (accuracy ±2%–4%).
+PIR Motion Sensor (HC-SR501): Detects motion within a certain range.
+RFID Module (RC522): Reads and validates RFID tags. Each tag is currently assigned to control relay switching (ON/OFF).
+→ Datasheet: RC522 Datasheet PDF
+Development Tools Used:
+Arduino IDE v2.3.6
+Visual Studio Code
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
+System Installation Instructions:
+1. Clone the project and copy the corresponding components into your system.
+2. Setup Instructions:
+2.1. Setup on Arduino IDE v2.3.6:
+Create a new sketch in Arduino IDE.
+Copy the contents from esp32.ino and esp8266.ino into their respective sketches.
+Install the necessary libraries (as listed in the code or README).
+Change the Wi-Fi SSID and password in the code to match your local network.
+Select the appropriate board type (ESP32 or ESP8266) and COM port for uploading the firmware.
+2.2. Setup the Web System:
+Open the "tessst111" project folder in Visual Studio Code.
+Make sure Node.js is installed. Run npm i in both backendd and Fontend directories to install dependencies.
+Set up MongoDB:
+Create a new project on MongoDB Atlas.
+Configure connection security, select connection method.
+Update the MongoDB URL in Backend/database/db.js.
+Configure IP addresses:
+Replace the IP addresses of ESP32 and ESP8266 in backend/routes/routes.js.
+These IPs can be found in the Serial Monitor when uploading code via Arduino IDE.
+Start the backend:
+Run npm start inside the backendd directory.
+Start the frontend:
+Run npm run dev inside the Fontend directory.
+``````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+
